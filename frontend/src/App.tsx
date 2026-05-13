@@ -1,51 +1,46 @@
-import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import { invoke } from "@tauri-apps/api/core";
-import "./App.css";
-
+import { useState } from "react"
+import "./App.css"
+import "@fontsource/playfair-display"
 function App() {
-  const [greetMsg, setGreetMsg] = useState("");
-  const [name, setName] = useState("");
-
-  async function greet() {
-    // Learn more about Tauri commands at https://tauri.app/develop/calling-rust/
-    setGreetMsg(await invoke("greet", { name }));
-  }
+  const [email, setEmail] = useState("")
+  const [senha, setSenha] = useState("")
 
   return (
-    <main className="container">
-      <h1>Welcome to Tauri + React</h1>
+    <div className="min-h-screen bg-gray-100 flex items-center justify-center">
+      <div className="bg-white p-10 rounded-2xl shadow-xl w-full max-w-sm">
+<h1 className="text-emerald-600 text-3xl font-bold text-center mb-1 fonte-titulo">FINANCE LL</h1>
+        <p className="text-gray-400 text-center text-sm mb-8">Controle seu dinheiro</p>
 
-      <div className="row">
-        <a href="https://vite.dev" target="_blank">
-          <img src="/vite.svg" className="logo vite" alt="Vite logo" />
-        </a>
-        <a href="https://tauri.app" target="_blank">
-          <img src="/tauri.svg" className="logo tauri" alt="Tauri logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <p>Click on the Tauri, Vite, and React logos to learn more.</p>
-
-      <form
-        className="row"
-        onSubmit={(e) => {
-          e.preventDefault();
-          greet();
-        }}
-      >
+        <label className="text-gray-500 text-sm mb-1 block">Email</label>
         <input
-          id="greet-input"
-          onChange={(e) => setName(e.currentTarget.value)}
-          placeholder="Enter a name..."
+          type="email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          placeholder="seu@email.com"
+          className="w-full bg-gray-100 rounded-lg px-4 py-3 mb-4 outline-none focus:ring-2 focus:ring-emerald-400 text-gray-700"
         />
-        <button type="submit">Greet</button>
-      </form>
-      <p>{greetMsg}</p>
-    </main>
-  );
+
+        <label className="text-gray-500 text-sm mb-1 block">Senha</label>
+        <input
+          type="password"
+          value={senha}
+          onChange={(e) => setSenha(e.target.value)}
+          placeholder="••••••••"
+          className="w-full bg-gray-100 rounded-lg px-4 py-3 mb-6 outline-none focus:ring-2 focus:ring-emerald-400 text-gray-700"
+        />
+
+        <button className="w-full bg-emerald-600 hover:bg-emerald-500 text-white font-semibold py-3 rounded-lg transition-colors mb-4">
+          ENTRAR
+        </button>
+
+        <p className="text-gray-400 text-center text-sm">
+          Não tem uma conta?{" "}
+          <span className="text-emerald-500 cursor-pointer hover:underline font-semibold">Crie agora</span>
+        </p>
+
+      </div>
+    </div>
+  )
 }
 
-export default App;
+export default App
