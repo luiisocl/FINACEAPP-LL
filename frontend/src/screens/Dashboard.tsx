@@ -1,6 +1,8 @@
 import { PieChart, Pie, Cell, Tooltip, Legend } from "recharts"
+import { useNavigate } from "react-router-dom"
 
 function Dashboard() {
+    const navigate = useNavigate()
   return (
     <div className="flex min-h-screen bg-gray-100">
 
@@ -9,6 +11,7 @@ function Dashboard() {
         <h1 className="text-emerald-600 text-xl font-bold mb-8">FINANCE LL</h1>
         <nav className="flex flex-col gap-2">
           <button className="text-left px-4 py-2 rounded-lg bg-emerald-50 text-emerald-700 font-semibold">Dashboard</button>
+          <button onClick={() => navigate("/transacoes")} className="text-left px-4 py-2 rounded-lg text-gray-500 hover:bg-gray-100">Transações</button>
           <button className="text-left px-4 py-2 rounded-lg text-gray-500 hover:bg-gray-100">Transações</button>
           <button className="text-left px-4 py-2 rounded-lg text-gray-500 hover:bg-gray-100">Faturas</button>
           <button className="text-left px-4 py-2 rounded-lg text-gray-500 hover:bg-gray-100">IA Financeira</button>
